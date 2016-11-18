@@ -21,6 +21,7 @@
   <script src="/SparkManagement/assets/bootstrap/js/bootstrap.min.js"></script>
   <script src="/SparkManagement/assets/bootstrap/js/collapse.js"></script>
   <script src="/SparkManagement/assets/bootstrap/js/transition.js"></script>
+  <script src="/SparkManagement/assets/js/vue.js"></script>
 
 </head>
 

@@ -11,10 +11,16 @@ class User_list_model extends CI_Model {
         parent::__construct();
     }
 
-    public function get_user_list() {
+    public function get_user_list($user=null, $group=null) {
         $this->db->select("u.user_name, u.user_email, ug.ug_group, u.user_touched, u.user_registration");
         $this->db->join("user_groups ug", "u.user_id=ug.ug_user", "left");
         $this->db->order_by("u.user_touched", "desc");
+        if(!empty($user)) {
+            $this->db->like("u.user_name", $user);
+        }
+        if(!empty($group)) {
+            $this->db->like("ug.ug_group", $group);
+        }
         $result = $this->db->get("user u");
         return $this->fetch($result);
     }
