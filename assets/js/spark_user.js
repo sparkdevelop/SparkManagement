@@ -10,7 +10,6 @@ $(function(){
         user_list_table.get_user_list();
     });
 
-
     var user_list_table = new Vue({
         el: '#user_list_table',
         data: {
@@ -23,8 +22,8 @@ $(function(){
                 var data = {
                     'user': user,
                     'group': group
-                }
-                options = {
+                };
+                var options = {
                     url: '/SparkManagement/index.php/user/User_list/search_user_list',
                     type: 'get',
                     data: data,
@@ -32,12 +31,11 @@ $(function(){
                     success: function (data) {
                         user_list_table.users = data['user_list'];
                     }
-                }
+                };
                 $.ajax(options);
             }
         }
-    }
-    );
+    });
 
     user_list_table.get_user_list();
 });

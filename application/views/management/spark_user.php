@@ -1,8 +1,7 @@
 <?php
   require_once("header.php");
 ?>
-<script src="/SparkManagement/assets/js/spark_user.js" xmlns:v-on="http://www.w3.org/1999/xhtml"
-        xmlns:v-on="http://www.w3.org/1999/xhtml"></script>
+<script src="/SparkManagement/assets/js/spark_user.js"></script>
       <div class="content">
         <div class="second-nav">
           <ul class="nav nav-pills">
@@ -11,8 +10,7 @@
           </ul>
         </div>
         <br>
-         <div>
-           <form class="form-horizontal" role="form">
+         <div class="form-horizontal">
              <div class="form-group">
                <label for="inputUser" class="col-sm-1 control-label">用户名：</label>
                <div class="col-sm-3">
@@ -28,10 +26,9 @@
              <div class="form-group">
                <label for="submit" class="col-sm-1 control-label"></label>
                <div class="col-sm-3">
-                 <button type="submit" class="btn btn-primary form-control" id="submit">给我搜</button>
+                 <button class="btn btn-primary form-control" id="submit">给我搜</button>
                </div>
              </div>
-           </form>
          </div>
 
         <div id="user_list_table">

@@ -17,13 +17,12 @@ class User_list extends CI_Controller {
      * 用户列表渲染
      */
     public function index() {
-        $user_list = $this->user_list_model->get_user_list();
-        $user_list = $this->formateDate($user_list);
-        $data['user_list'] = $user_list;
-        //print_r($data);
-        $this->load->view('management/spark_user', $data);
+        $this->load->view('management/spark_user');
     }
 
+    /**
+     * 根据输入的用户名和用户组搜索相应的用户
+     */
     public function search_user_list() {
         $user = $this->input->get('user');
         $group = $this->input->get('group');
@@ -33,6 +32,11 @@ class User_list extends CI_Controller {
         echo json_encode($data);
     }
 
+    /**
+     * 格式化数据库中查询出的时间数据
+     * @param $user_list
+     * @return array
+     */
     private function formateDate($user_list) {
         if(!isset($user_list)) {
             return Array(Array());
