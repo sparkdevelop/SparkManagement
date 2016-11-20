@@ -9,6 +9,7 @@ class User_list extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
+        $this->load->library('Management_constants');
         $this->load->database();
         $this->load->model('user/User_list_model', 'user_list_model');
     }
@@ -18,6 +19,12 @@ class User_list extends CI_Controller {
      */
     public function index() {
         $this->load->view('management/spark_user');
+    }
+
+    public function edit_view() {
+        $user_name = $this->input->get('user_name');
+        $data['user_name'] = $user_name;
+        $this->load->view('management/spark_edit_user', $data);
     }
 
     /**
@@ -30,6 +37,39 @@ class User_list extends CI_Controller {
         $user_list = $this->formateDate($user_list);
         $data['user_list'] = $user_list;
         echo json_encode($data);
+    }
+
+    public function edit_user_info() {
+        $user_name = $this->input->post('user_name');
+        $user_email = $this->input->post('user_email');
+        $user_group = $this->input->post('user_group');
+        $old_user_name = $this->input->post('old_user_name');
+        if(empty($user_name) || empty($user_email) || empty($user_group)) {
+            throw new Exception("lack info");
+        }
+        $verify = $this->check_user_info($old_user_name, $user_group, $user_email);
+        if($verify != "PASS") {
+            echo json_encode($verify);
+            return;
+        }
+        $is_success = $this->user_list_model->update_user_info($old_user_name, $user_name, $user_email, $user_group);
+        echo json_encode($is_success);
+    }
+
+    private function check_user_info($old_user_name, $user_group, $user_email) {
+        $user = $this->user_list_model->get_user_by_name($old_user_name);
+        if(empty($user)) {
+            return $this->management_constants->get_user_not_exist();
+        }
+        $group = $this->user_list_model->get_group_by_name($user_group);
+        if(empty($group)) {
+            return $this->management_constants->get_group_not_exist();
+        }
+        $pattern = "/^([0-9A-Za-z\\-_\\.]+)@([0-9a-z]+\\.[a-z]{2,3}(\\.[a-z]{2})?)$/i";
+        if(!preg_match($pattern, $user_email)) {
+            return $this->management_constants->get_email_error();
+        }
+        return "PASS";
     }
 
     /**

@@ -1,12 +1,11 @@
 <?php
   require_once("header.php");
 ?>
-<script src="/SparkManagement/assets/js/spark_user.js"></script>
       <div class="content">
         <div class="second-nav">
           <ul class="nav nav-pills">
-            <li class="active"><a href="#">所有用户</a></li>
-            <li><a href="#">编辑用户</a></li>
+            <li class="active"><a href="/SparkManagement/index.php/user/User_list" target="_blank">所有用户</a></li>
+            <li><a href="/SparkManagement/index.php/user/User_list/edit_user_info" target="_blank">编辑用户</a></li>
           </ul>
         </div>
         <br>
@@ -40,6 +39,7 @@
               <th>邮箱</th>
               <th>最近登录</th>
               <th>注册时间</th>
+              <th>编辑</th>
             </tr>
             </thead>
             <tbody>
@@ -49,11 +49,13 @@
                 <td>{{ user.user_email }}</td>
                 <td>{{ user.user_touched }}</td>
                 <td>{{ user.user_registration }}</td>
+                <td><a v-on:click="edit">编辑<span hidden="hidden">{{ user.user_name }}</span></a></td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
+<script src="/SparkManagement/assets/js/spark_user.js" language="JavaScript"></script>
 <?php
   require_once("footer.php");
 ?>

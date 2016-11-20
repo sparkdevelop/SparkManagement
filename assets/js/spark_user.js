@@ -21,7 +21,7 @@ $(function(){
                 var group = $('#inputGroup').val();
                 var data = {
                     'user': user,
-                    'group': group
+                    'group': group,
                 };
                 var options = {
                     url: '/SparkManagement/index.php/user/User_list/search_user_list',
@@ -30,12 +30,23 @@ $(function(){
                     dataType: 'json',
                     success: function (data) {
                         user_list_table.users = data['user_list'];
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        alert(XMLHttpRequest.status);
+                        alert(XMLHttpRequest.readyState);
+                        alert(textStatus);
                     }
                 };
                 $.ajax(options);
+            },
+            edit: function(event) {
+                user_name = $(event.target).find('span').first().text();
+                url = '/SparkManagement/index.php/user/User_list/edit_view?user_name=' + user_name;
+                window.location = url;
             }
         }
     });
 
     user_list_table.get_user_list();
+
 });
