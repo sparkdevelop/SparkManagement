@@ -1,5 +1,13 @@
 火花后台开发文档  
 ===================================  
+### 开发者注意
+  1、主要文件夹：application中的controllers、models、views文件夹，assets文件夹存放css\js\img文件。<br />
+  2、每个开发者都把自己的文件放在对应的文件夹里，以免混在一起，不好辨认。<br /> 
+  3、views里的template文件夹里存放了公共的模板，可直接用，不要再自己复制一个了。header里有一些公共的必用样式，如果有单独的样式，可在自己的文件中单独引用。<br />
+  4、CI用户手册: 'http://codeigniter.org.cn/user_guide/index.html'<br />
+  5、以后写路径时都写绝对路径，避免写相对路径<br />
+  <br />
+
   火花后台主要分为三大部分：数据分析、用户管理、内容管理。<br />   
   目前都是针对wiki的数据，还未对论坛的数据进行分析。
     
@@ -54,13 +62,3 @@
   内容管理主要实现对wiki词条的查看、删除、分组、权限管理、消息发送、多个子系统间用户数据共享等功能。<br />  
  
   开发者：暂无
-
-
-### 开发者注意
-  1、主要文件夹：application中的controllers、models、views文件夹，assets文件夹存放css\js\img文件。<br />
-  2、每个开发者都把自己的文件放在对应的文件夹里，以免混在一起，不好辨认。<br /> 
-  3、views里的template文件夹里存放了公共的模板，可直接用，不要再自己复制一个了。header里有一些公共的必用样式，如果有单独的样式，可在自己的文件中单独引用。
-  4、CI用户手册: 'http://codeigniter.org.cn/user_guide/index.html'
-
-  <br />
-  <br />
