@@ -1,0 +1,44 @@
+.state i{
+    color: white ;
+    text-align: center ;
+    padding-top: 40px;
+    float: left
+}
+
+.value{
+    background-color: #ffffff ;
+    text-align:center;
+    width: 250px;
+    height: 150px;
+    display: block;
+    float: left;
+    padding-top: 34px
+}
+
+.count{
+    font-size: 36px;
+}
+
+.btn btn-default dropdown-toggle{
+    border: 0;
+}
+.choose div{
+    display: none;
+}
+
+.dropdown button{
+    border:0;
+}
+
+#user_list_table{
+
+}
+
+#container{
+    min-width:400px;
+    height:400px;
+}
+
+.table table-hover table-striped{
+    margin-top: 50px;
+}
