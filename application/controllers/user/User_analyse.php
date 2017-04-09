@@ -25,6 +25,7 @@ public function print_array(){
     $num=$this->User_anlyse_model->print_array();
     echo $num;
 }
+
 public function info_data()
 {
     $url = 'http://' . $_SERVER['SERVER_NAME'] . '/Spark/index.php/user/User_analyse/info_data1';
@@ -53,13 +54,14 @@ public function info_data()
     $this->load->view('user_analyse',$data);
 
 }
+
     public function info_data1($start_date,$end_date)
     {
 
         if (empty($start_date) && empty($end_date)) {
             // 附默认值
             $end_date = (int)date('Ymd', time());
-            $start_date = $end_date - 7;
+            $start_date = $end_date - 6;
         }
 
         $user_data = $this->User_anlyse_model->get_show_data($start_date, $end_date);
@@ -76,7 +78,7 @@ public function info_chart()
     if (empty($_GET['start_date']) && empty($_GET['end_date'])) {
         // 附默认值
         $end_date = (int)date('Ymd', time());
-        $start_date = $end_date - 7;
+        $start_date = $end_date - 6;
     }
 
     $user_data = $this->User_anlyse_model->get_show_data($start_date, $end_date);
@@ -94,9 +96,60 @@ public function info_chart()
     $this->load->view('user_increment',$data);
 
 }
+    public function draw_chart()
+    {
+        $url = 'http://' . $_SERVER['SERVER_NAME'] . '/Spark/index.php/user/User_analyse/info_chart1';
+
+        if (empty($_GET['start_date']) && empty($_GET['end_date'])) {
+            // 附默认值
+            $end_date = (int)date('Ymd', time());
+            $start_date = $end_date - 6;
+        }
+
+        $user_data = $this->User_anlyse_model->get_show_data($start_date, $end_date);
+        $data['user_data'] = array_reverse($user_data);
+
+        $incr_data = array();
+        $total_data = array();
+        foreach ($user_data as $key => $value) {
+            array_push($incr_data, $value['incr_user']);
+            array_push($total_data, $value['total_user']);
+        }
+        $data['incr_data'] = json_encode($incr_data);
+        $data['total_data'] = json_encode($total_data);
+        $data['api_url'] = $url;
+        $this->load->view('user_active',$data);
+
+    }
+    public function draw1_chart()
+    {
+        $url = 'http://' . $_SERVER['SERVER_NAME'] . '/Spark/index.php/user/User_analyse/info_chart1';
+
+        if (empty($_GET['start_date']) && empty($_GET['end_date'])) {
+            // 附默认值
+            $end_date = (int)date('Ymd', time());
+            $start_date = $end_date - 6;
+        }
+
+        $user_data = $this->User_anlyse_model->get_show_data($start_date, $end_date);
+        $data['user_data'] = array_reverse($user_data);
+
+        $incr_data = array();
+        $total_data = array();
+        foreach ($user_data as $key => $value) {
+            array_push($incr_data, $value['incr_user']);
+            array_push($total_data, $value['total_user']);
+        }
+        $data['incr_data'] = json_encode($incr_data);
+        $data['total_data'] = json_encode($total_data);
+        $data['api_url'] = $url;
+        $this->load->view('user_retain',$data);
+
+    }
 
     public function info_chart1()
     {
+//        print 1;
         if (empty($_POST['start_date']) || empty($_POST['end_date'])) {
             // 附默认值
             $end_date = (int)date('Ymd', time());
@@ -111,14 +164,17 @@ public function info_chart()
 
         $incr_data = array();
         $total_data = array();
+
         foreach ($user_data as $key => $value) {
             array_push($incr_data, $value['incr_user']);
             array_push($total_data, $value['total_user']);
         }
         $data['incr_data'] = json_encode($incr_data);
         $data['total_data'] = json_encode($total_data);
-        var_dump($data);
-        //$this->load->view('user_increment',$data);
+        print json_encode($data);
+        die;
+////        return $data;
+//        //$this->load->view('user_increment',$data);
 
     }
 

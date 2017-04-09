@@ -11,17 +11,26 @@
 
   <title>导航</title>
 
-  <!-- Bootstrap core CSS -->
-  <link href="/SparkManagement/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href="/SparkManagement/assets/css/main.css" rel="stylesheet">
-  <link href="/SparkManagement/assets/css/table.css" rel="stylesheet">
 
-  <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> 
-  <script src="/SparkManagement/assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="/SparkManagement/assets/bootstrap/js/collapse.js"></script>
-  <script src="/SparkManagement/assets/bootstrap/js/transition.js"></script>
-  <script src="/SparkManagement/assets/js/vue.js"></script>
+  <!-- Bootstrap core CSS -->
+  <script src="../../../assets/js/jquery-1.11.3.min.js"></script>
+  <link href="../../../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../../../assets/css/main.css" rel="stylesheet">
+  <link href="../../../assets/css/table.css" rel="stylesheet">
+  <link href="../../../assets/css/user.css" rel="stylesheet">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+  <script src="http://cdn.hcharts.cn/highcharts/modules/exporting.js"></script>
+  <script src="../../../assets/js/echarts.min.js"></script>
+  <script src="../../../assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../../../assets/bootstrap/js/collapse.js"></script>
+  <script src="../../../assets/js/user_increment.js"></script>
+  <script src="../../../assets/bootstrap/js/transition.js"></script>
+  <script src="../../../assets/datepicker/dateRange.js"></script>
+  <link href="../../../assets/datepicker/dateRange.css" rel="stylesheet">
+
 
 </head>
 
@@ -34,7 +43,7 @@
         <i class="fa fa-navicon fa-lg" id="menu"></i>
         <a href="index.html" id="logo"><span>火花空间</span></a>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><i class="fa fa-sign-in fa-fw"></i> 登录</a></li>
+<!--          <li><a href="#"><i class="fa fa-sign-in fa-fw"></i> 登录</a></li>-->
         </ul>
       </div>     
     </div>
@@ -85,7 +94,7 @@
           </div>
           <div id="collapseThree" class="panel-collapse collapse">
             <div class="panel-body">
-              <a>用户列表</a>
+              <a href="">用户列表</a>
               <a>用户贡献</a>
               <a>用户组权限</a>
               <a>封禁用户</a>
@@ -104,7 +113,10 @@
           <div id="collapseFour" class="panel-collapse collapse">
             <div class="panel-body">
               <a>用户分析</a>
+                <a href="http://localhost/Spark/index.php/user/User_analyse/info_chart#">用户折线</a>
+                <a href="http://localhost/Spark/index.php/user/User_analyse/info_data#">用户增长</a>
               <a>内容分析</a>
+
             </div>
           </div>          
         </div>
